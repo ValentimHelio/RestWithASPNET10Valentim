@@ -1,0 +1,6 @@
+@RestWithASPNET10Valentim_HostAddress = http://localhost:5045
+
+GET {{RestWithASPNET10Valentim_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
