@@ -1,4 +1,5 @@
 using RestWithASPNET10Valentim.Services;
+using RestWithASPNET10Valentim.Services.Impl;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton<MathService>();
+builder.Services.AddSingleton<IPersonServices, PersonServicesImpl>();
 
 var app = builder.Build();
 
