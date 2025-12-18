@@ -1,4 +1,6 @@
-﻿namespace RestWithASPNET10Valentim.Model;
+﻿using RestWithASPNET10Valentim.Model;
+
+namespace RestWithASPNET10Valentim.Services;
 
 public interface IPersonServices
 {
