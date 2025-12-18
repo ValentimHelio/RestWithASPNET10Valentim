@@ -11,19 +11,36 @@ public class MathController : ControllerBase
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
-            var sum = ConvertToDecimal(firstNumber)+ ConvertToDecimal(secondNumber);
-            return Ok(sum); 
+            var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
+            return Ok(sum);
         }
-        BadRequest("Invalid Input!");
+        return BadRequest("Invalid Input!");
     }
 
-    private decimal ConvertToDecimal(string secondNumber)
+    private decimal ConvertToDecimal(string strNumber)
     {
-        throw new NotImplementedException();
+        decimal result = 0;
+        if (decimal.TryParse(
+            strNumber
+            , System.Globalization.NumberStyles.Any
+            , System.Globalization.NumberFormatInfo.InvariantInfo
+            , out result)
+        )
+        {
+            return result;
+        }
+        return 0;
     }
 
-    private bool IsNumeric(string firstNumber)
+    private bool IsNumeric(string strNumber)
     {
-        return true;
+        decimal result = 0;
+        bool isNumber = (decimal.TryParse(
+            strNumber
+            , System.Globalization.NumberStyles.Any
+            , System.Globalization.NumberFormatInfo.InvariantInfo
+            , out result)
+        );
+        return isNumber;
     }
 }

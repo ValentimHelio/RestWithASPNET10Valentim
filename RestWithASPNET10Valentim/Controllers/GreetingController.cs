@@ -1,23 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET10Valentim.Model;
 
-namespace RestWithASPNET10Valentim.Controllers
+namespace RestWithASPNET10Valentim.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class GreetingController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class GreetingController : ControllerBase
+    private static long _counter = 0;
+    private static readonly string _template = "Hello, {0}!";
+
+    [HttpGet]
+    public Greeting Get([FromQuery] string name = "World")
     {
-        private static long _counter = 0;
-        private static readonly string _template = "Hello, {0}!";
-
-
-        [HttpGet]
-        public Greeting Get([FromQuery] string name = "World")
-        {
-            var id = Interlocked.Increment(ref _counter);
-            var content = string.Format(_template, name);
-            return new Greeting(1, content);
-        }
-
+        var id = Interlocked.Increment(ref _counter);
+        var content = string.Format(_template, name);
+        return new Greeting(1, content);
     }
+
 }
