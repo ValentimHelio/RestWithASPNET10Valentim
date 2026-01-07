@@ -1,0 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace RestWithASPNET10Valentim.Model.Context;
+
+public class MSSQLContext: DbContext
+{
+    public MSSQLContext(DbContextOptions options) : base(options)
+    {
+    }
+
+    public DbSet<Person> Persons { get; set; }
+}
